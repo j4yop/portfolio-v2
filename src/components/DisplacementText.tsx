@@ -87,7 +87,7 @@ const fragmentShader = `
 `;
 
 const DisplacementText = ({
-  text = " Karn Singh",
+  text = "JAY GOPAL",
   fontSize = 200,
   font = "sans-serif",
   color,

@@ -9,8 +9,8 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { highlightsData } from "@/data/highlightsData";
 
 export const metadata: Metadata = {
-  title: "Highlights | Ashutoshx7",
-  description: "A complete archive of Ashutoshx7's highlights and milestones.",
+  title: "Highlights | Jay Gopal Tripathy",
+  description: "A complete archive of Jay Gopal Tripathy's highlights, awards, and milestones.",
 };
 
 const horizontalDots = {
