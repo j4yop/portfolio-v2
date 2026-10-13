@@ -52,19 +52,60 @@ export function GithubGraph() {
   }, []);
 
   useEffect(() => {
+    let isCancelled = false;
+
+    const transformFallback = (data: {
+      total?: { lastYear?: number };
+      contributions?: Array<{ date: string; count: number; level: number }>;
+    }) => {
+      const days = data.contributions || [];
+      const parsedWeeks: ContributionWeek[] = [];
+      for (let i = 0; i < days.length; i += 7) {
+        const chunk = days.slice(i, i + 7);
+        parsedWeeks.push({
+          contributionDays: chunk.map((d) => ({
+            contributionCount: d.count,
+            date: d.date,
+          })),
+        });
+      }
+
+      const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      const seenMonths = new Set<string>();
+      const parsedMonths: ContributionMonth[] = [];
+      for (const d of days) {
+        const monthIdx = parseInt(d.date.slice(5, 7), 10) - 1;
+        const mName = monthNames[monthIdx];
+        if (mName && !seenMonths.has(mName)) {
+          seenMonths.add(mName);
+          parsedMonths.push({ name: mName });
+        }
+      }
+
+      const total = data.total?.lastYear ?? days.reduce((sum, d) => sum + d.count, 0);
+
+      return {
+        weeks: parsedWeeks,
+        months: parsedMonths,
+        totalContributions: total,
+      };
+    };
+
     const fetchContributions = async () => {
-      const cacheKey = "github_contributions";
+      const cacheKey = "github_contributions_j4yop_v4";
       const cachedData = typeof window !== "undefined" ? localStorage.getItem(cacheKey) : null;
       
       if (cachedData) {
         try {
           const parsed = JSON.parse(cachedData);
-          setWeeks(parsed.weeks);
-          setMonths(parsed.months || []);
-          setTotalContributions(parsed.totalContributions);
-          setLoading(false);
+          if (parsed.totalContributions > 0 && parsed.weeks?.length > 0) {
+            setWeeks(parsed.weeks);
+            setMonths(parsed.months || []);
+            setTotalContributions(parsed.totalContributions);
+            setLoading(false);
+          }
         } catch {
-          setLoading(true);
+          // ignore corrupted cache
         }
       }
 
@@ -98,29 +139,58 @@ export function GithubGraph() {
           body: JSON.stringify({ query }),
         });
 
-        const data = await response.json();
-        const calendar = data?.data?.user?.contributionsCollection?.contributionCalendar;
-        
-        if (calendar) {
-          setWeeks(calendar.weeks);
-          setMonths(calendar.months);
-          setTotalContributions(calendar.totalContributions);
-          if (typeof window !== "undefined") {
-            localStorage.setItem(cacheKey, JSON.stringify({
-              weeks: calendar.weeks,
-              months: calendar.months,
-              totalContributions: calendar.totalContributions
-            }));
+        if (response.ok) {
+          const data = await response.json();
+          const calendar = data?.data?.user?.contributionsCollection?.contributionCalendar;
+          if (calendar && calendar.totalContributions > 0) {
+            if (!isCancelled) {
+              setWeeks(calendar.weeks);
+              setMonths(calendar.months);
+              setTotalContributions(calendar.totalContributions);
+              setLoading(false);
+            }
+            if (typeof window !== "undefined") {
+              localStorage.setItem(cacheKey, JSON.stringify({
+                weeks: calendar.weeks,
+                months: calendar.months,
+                totalContributions: calendar.totalContributions,
+              }));
+            }
+            return;
           }
         }
-      } catch (error) {
-        console.error("Failed to fetch GitHub contributions", error);
+      } catch (err) {
+        console.warn("API /api/github fetch failed, falling back to public endpoint", err);
+      }
+
+      // Direct fallback to public API if /api/github returns empty or fails
+      try {
+        const fallbackRes = await fetch("https://github-contributions-api.jogruber.de/v4/j4yop?y=last");
+        if (fallbackRes.ok) {
+          const fallbackData = await fallbackRes.json();
+          const transformed = transformFallback(fallbackData);
+          if (!isCancelled && transformed.totalContributions > 0) {
+            setWeeks(transformed.weeks);
+            setMonths(transformed.months);
+            setTotalContributions(transformed.totalContributions);
+            setLoading(false);
+            if (typeof window !== "undefined") {
+              localStorage.setItem(cacheKey, JSON.stringify(transformed));
+            }
+          }
+        }
+      } catch (fallbackErr) {
+        console.error("Direct public contributions fetch failed", fallbackErr);
       } finally {
-        setLoading(false);
+        if (!isCancelled) setLoading(false);
       }
     };
 
     fetchContributions();
+
+    return () => {
+      isCancelled = true;
+    };
   }, []);
 
   const contributionLevels = useMemo<ContributionLevel[]>(
@@ -228,55 +298,57 @@ export function GithubGraph() {
       {/* Graph content — sits directly on the page background */}
       <div className="relative py-4">
         <div className="w-full">
-          <div>
-            <div className="mb-2 flex w-full justify-between text-[10px] text-zinc-400 dark:text-zinc-500">
-              {displayMonths.map((month, index) => (
-                <span key={`${month}-${index}`}>{month}</span>
-              ))}
-            </div>
+          <div className="overflow-x-auto pb-1 -mx-1 px-1">
+            <div className="min-w-[580px]">
+              <div className="mb-2 flex w-full justify-between text-[10px] text-zinc-400 dark:text-zinc-500">
+                {displayMonths.map((month, index) => (
+                  <span key={`${month}-${index}`}>{month}</span>
+                ))}
+              </div>
 
-            <div className="grid grid-cols-[repeat(53,minmax(0,1fr))] gap-x-[2px]" role="img" aria-label={graphStatus}>
-              {loading && weeks.length === 0
-                ? Array.from({ length: 53 }).map((_, colIndex) => (
-                    <div key={colIndex} className="flex flex-col gap-[2px]">
-                      {Array.from({ length: 7 }).map((__, rowIndex) => (
-                        <div
-                          key={rowIndex}
-                          className="aspect-square w-full animate-pulse rounded-[2px] bg-zinc-100 dark:bg-zinc-800"
-                        />
-                      ))}
-                    </div>
-                  ))
-                : graphWeeks.map((week, colIndex) => (
-                    <div key={colIndex} className="flex flex-col gap-[2px]">
-                      {colIndex === 0 &&
-                        Array.from({ length: 7 - week.contributionDays.length }).map((_, i) => (
-                          <div key={`empty-top-${i}`} className="aspect-square w-full rounded-[2px] bg-transparent" />
-                        ))}
-
-                      {week.contributionDays.map((day) => {
-                        const level = getLevel(day.contributionCount);
-                        const color = contributionLevels[level];
-
-                        return (
+              <div className="grid grid-cols-[repeat(53,minmax(0,1fr))] gap-x-[2px]" role="img" aria-label={graphStatus}>
+                {loading && weeks.length === 0
+                  ? Array.from({ length: 53 }).map((_, colIndex) => (
+                      <div key={colIndex} className="flex flex-col gap-[2px]">
+                        {Array.from({ length: 7 }).map((__, rowIndex) => (
                           <div
-                            key={day.date}
-                            aria-hidden="true"
-                            aria-label={`${day.contributionCount} contributions on ${formatDate(day.date)}`}
-                            className={`aspect-square w-full rounded-[2px] opacity-80 outline-none transition-[opacity,transform] hover:scale-125 hover:opacity-100 dark:opacity-70 dark:hover:opacity-100 ${color.cell}`}
-                            onMouseEnter={(event) => showTooltip(day, event)}
-                            onMouseLeave={() => setTooltip(null)}
+                            key={rowIndex}
+                            className="aspect-square w-full animate-pulse rounded-[2px] bg-zinc-100 dark:bg-zinc-800"
                           />
-                        );
-                      })}
-
-                      {colIndex !== 0 &&
-                        week.contributionDays.length < 7 &&
-                        Array.from({ length: 7 - week.contributionDays.length }).map((_, i) => (
-                          <div key={`empty-bottom-${i}`} className="aspect-square w-full rounded-[2px] bg-transparent" />
                         ))}
-                    </div>
-                  ))}
+                      </div>
+                    ))
+                  : graphWeeks.map((week, colIndex) => (
+                      <div key={colIndex} className="flex flex-col gap-[2px]">
+                        {colIndex === 0 &&
+                          Array.from({ length: 7 - week.contributionDays.length }).map((_, i) => (
+                            <div key={`empty-top-${i}`} className="aspect-square w-full rounded-[2px] bg-transparent" />
+                          ))}
+
+                        {week.contributionDays.map((day) => {
+                          const level = getLevel(day.contributionCount);
+                          const color = contributionLevels[level];
+
+                          return (
+                            <div
+                              key={day.date}
+                              aria-hidden="true"
+                              aria-label={`${day.contributionCount} contributions on ${formatDate(day.date)}`}
+                              className={`aspect-square w-full rounded-[2px] opacity-80 outline-none transition-[opacity,transform] hover:scale-125 hover:opacity-100 dark:opacity-70 dark:hover:opacity-100 ${color.cell}`}
+                              onMouseEnter={(event) => showTooltip(day, event)}
+                              onMouseLeave={() => setTooltip(null)}
+                            />
+                          );
+                        })}
+
+                        {colIndex !== 0 &&
+                          week.contributionDays.length < 7 &&
+                          Array.from({ length: 7 - week.contributionDays.length }).map((_, i) => (
+                            <div key={`empty-bottom-${i}`} className="aspect-square w-full rounded-[2px] bg-transparent" />
+                          ))}
+                      </div>
+                    ))}
+              </div>
             </div>
           </div>
         </div>
