@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Doto, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { OnekoPet } from "@/components/OnekoPet";
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
@@ -83,6 +84,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <OnekoPet />
           {children}
         </ThemeProvider>
         <Analytics />

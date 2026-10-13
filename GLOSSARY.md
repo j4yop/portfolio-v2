@@ -63,3 +63,8 @@ _Avoid_: 3D button, booking button
 **Displacement Text**:
 A Three.js WebGL plane with custom GLSL vertex displacement shaders displacing typography toward the pointer along the z-axis.
 _Avoid_: 3D text, canvas text
+
+**Cursor Companion (Oneko)**:
+An interactive 8-directional animated screen companion sprite tracking cursor movement vectors across the viewport, featuring retro idle scratch/sleep states, draggable positioning, speech bubble responses, and variant switching.
+_Avoid_: Floating gif, mouse icon, pet widget
+
