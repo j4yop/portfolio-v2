@@ -2,206 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-
-type ExperienceData = {
-  title: string;
-  role: string;
-  dates: string;
-  location: string;
-  src: string;
-  type?: string;
-  imageFit?: "contain" | "cover";
-  imageZoom?: number;
-  description: string;
-  tech: string[];
-  metrics?: { label: string; value: string }[];
-  screenshot?: string;
-};
-
-const experiences: ExperienceData[] = [
-  {
-    title: "Linux Foundation AI Security Mentorship",
-    role: "AI Security Intern, Caracal",
-    dates: "Jun 2026 - Present",
-    location: "Remote",
-    src: "/Experience-image/lf-decentralized-trust.png",
-    imageFit: "contain",
-    imageZoom: 1,
-    description: `
-      Building Caracal, an AI-agent security platform that enforces pre-execution authority checks before humans, agents, or services can trigger delegated actions
-      Designing policy-driven AI execution controls for request routing, approval gates, revocation checks, and common human-to-agent and agent-to-service workflows
-      Modeling delegation graphs that evaluate long and deep authority chains, resolve valid permission paths, and block unauthorized agent actions before execution
-      Integrating a secret vault layer so AI agents can use API keys and service credentials through policy-approved access without exposing raw secrets
-      Recording tamper-evident audit records and immutable proofs to a ledger-backed adapter for compliance, traceability, and AI-action accountability
-      Extending the platform toward agent policy negotiation, security reasoning modules, decentralized identity, verifiable credentials, and audit-derived policy recommendations
-    `,
-    tech: [
-      "AI Security",
-      "AI Agents",
-      "Policy Engines",
-      "Delegation Graphs",
-      "Secret Vaults",
-      "DLT",
-      "Audit Logs",
-      "DID/VC",
-      "Agent Security",
-    ],
-    metrics: [
-      { label: "Core Components", value: "5" },
-      { label: "Principals", value: "3" },
-      { label: "Term", value: "Jun-Nov" },
-      { label: "Audit Trail", value: "Ledger" },
-    ],
-  },
-  {
-    title: "Google Summer of Code 2026",
-    role: "AI Intern, Sugar Labs",
-    dates: "May 2026 - August 2026",
-    location: "Remote",
-    src: "/Experience-image/Google_Summer_of_Code_sun_logo_2022.svg (1).png",
-    imageFit: "contain",
-    imageZoom: 0.9,
-    description: `
-      Building Activity On Demand, a constructionist AI workflow that helps learners create, inspect, modify, and remix real Sugar activities instead of passively receiving generated code
-      Designing a GTK3 experience launched from Sugar's Home View with prompt ideation, template selection, provider policy, generation progress, and Use - Modify - Create learning modes
-      Implementing the core Python architecture across ActivitySpec, template inference, RAG-grounded planning, Gemini/local provider flows, SQLite job history, session revisions, provenance, and validation
-      Developing a guided Studio with file tree navigation, annotated source viewing, AST-based code explanations, editable-region challenges, live validation, version diffs, and reflection prompts
-      Building classroom-ready safeguards with provider profiles, teacher-controlled settings, API-key storage, forbidden import/call validation, template fallback, and retry-on-validation loops
-      Supporting the Sugar Labs community by reviewing contributor pull requests, onboarding new developers, discussing issues, and helping applicants clarify GSoC proposal problem statements
-    `,
-    tech: [
-      "Python",
-      "GTK3",
-      "Sugar",
-      "Gemini API",
-      "SQLite",
-      "AST",
-      "RAG",
-      "LLM Safety",
-    ],
-    metrics: [
-      { label: "Learning Modes", value: "3" },
-      { label: "Architecture Layers", value: "5" },
-      { label: "Modules", value: "14+" },
-      { label: "RAG Docs", value: "16+" },
-    ],
-  },
-  {
-    title: "Vercel OSS Program x VengenceUI",
-    role: "Founder & Maintainer",
-    dates: "Oct 2025 - Present",
-    location: "Remote",
-    src: "/Experience-image/vercel-symbol-colored-light.png",
-    imageFit: "contain",
-    imageZoom: 0.72,
-    description: `
-      Selection: VengenceUI was chosen for Vercel's Winter 2026 Open Source Program in March 2026 as a composable, performance-first UI system for real-world product workflows
-      VengenceUI v1: Founded the open-source animated component library in October 2025 and grew it to 683 GitHub stars, 40 forks, and a 10-contributor community
-      Monthly traction: Grew from 30,000 to 40,000 monthly visitors and from 120,000 to 200,000 monthly page views while maintaining a 34% bounce rate
-      VengenceUI v2: Rebuilt the product from the ground up with 50+ production-ready components, stronger visual consistency, improved documentation, and a faster component-discovery experience
-      Developer experience: Designed copy-paste installation flows, reusable registry components, interactive previews, responsive documentation, and clearer integration guidance
-      Engineering: Led architecture, design systems, component APIs, animation quality, performance optimization, accessibility, deployment, analytics, and community contributions across both versions
-    `,
-    tech: [
-      "Next.js",
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Framer Motion",
-      "MDX",
-      "Vercel",
-    ],
-    metrics: [
-      { label: "GitHub Stars", value: "683" },
-      { label: "Monthly Visitors", value: "30,000 - 40,000" },
-      { label: "Monthly Page Views", value: "120,000 - 200,000" },
-      { label: "V2 Components", value: "50+" },
-    ],
-    screenshot: "/Experience-image/vercel-analytics-color.png",
-  },
-  {
-    title: "Open Source Contributor",
-    role: "Sugar Labs, Joplin, kgateway & more",
-    dates: "Sep 2025 - Apr 2026",
-    location: "Remote",
-    src: "/Experience-image/pngegg (1).png",
-    imageFit: "contain",
-    imageZoom: 1.5,
-    description: `
-      Sugar Labs: Delivered 82 pull requests across Music Blocks, Music Blocks V4, and www-v2, covering performance, reliability, testing, accessibility, CI, and developer tooling
-      Sugar Labs: Reduced memory usage by 70-120 MB through lazy bitmap caching and by 50-115 MB by fixing leaked Tone.js synthesizers
-      Sugar Labs: Improved canvas rendering, block interactions, audio loading, retry and timer handling, crash recovery, Lighthouse CI, PR automation, and unit-test coverage
-      Joplin: Authored 18 pull requests with 11 merged across desktop and mobile, improving global shortcuts, E2EE, plugins, sync, exports, editors, localization, updates, and rendering
-      Joplin: Prevented failing plugins from blocking startup, removed JSDOM from the Turndown renderer, reused the master-password flow for E2EE, fixed duplicate code blocks and Ctrl+wheel zoom, and enriched frontmatter exports
-      Kmesh: Authored a macOS development guide to make local setup and contributor onboarding clearer
-      Additional work: Improved kgateway migration documentation and HTTPS security, alongside contributions to FOSSology, FOSSASIA Eventyay, Extralit, and React JSON Schema Form covering scheduler stability, SPDX compliance, authentication flows, and React 19 compatibility
-    `,
-    tech: [
-      "JavaScript",
-      "TypeScript",
-      "React",
-      "Electron",
-      "Python",
-      "C",
-      "Vue",
-      "GitHub Actions",
-    ],
-    metrics: [
-      { label: "Repositories", value: "10" },
-      { label: "Pull Requests", value: "112" },
-      { label: "Merged", value: "72" },
-      { label: "Still Open", value: "8" },
-    ],
-  },
-  {
-    title: "Google Summer Of Code",
-    role: "Open Source Contributor",
-    dates: "May 2025 - August 2025",
-    location: "Remote",
-    src: "/Experience-image/Google_Summer_of_Code_sun_logo_2022.svg (1).png",
-    imageFit: "contain",
-    imageZoom: 0.9,
-    description: `
-      Built scalable solutions for open source organizations
-      Received mentorship from top engineers and industry experts
-      Contributed real-world features that impacted thousands of users
-      Optimized codebase performance and reduced technical debt significantly
-    `,
-    tech: ["Next.js", "TypeScript", "React", "Node.js"],
-  },
-  {
-    title: "C4GT",
-    role: "Open Source Contributor",
-    dates: "May 2025 - August 2025",
-    location: "Remote",
-    src: "https://static.wixstatic.com/media/060b0c_8029055ce0074bfaa4bb6d9f1c2c33d2~mv2.png/v1/fill/w_2266,h_2168,al_c,q_95,usm_0.66_1.00_0.01,enc_auto/060b0c_8029055ce0074bfaa4bb6d9f1c2c33d2~mv2.png",
-    imageFit: "contain",
-    imageZoom: 1.2,
-    description: `
-      Developed innovative tools solving real developer problems
-      Shipped production features with 10k+ downloads
-      Collaborated with open source maintainers and communities
-      Authored technical documentation to streamline developer onboarding
-    `,
-    tech: ["Prisma", "Cloudflare", "LangChain", "TypeScript"],
-  },
-  {
-    title: "Open Source Contributor",
-    role: "Full Stack Developer",
-    dates: "December 2024 - April 2025",
-    location: "Remote",
-    src: "/Experience-image/pngegg (1).png",
-    imageFit: "contain",
-    imageZoom: 1.5,
-    description: `
-      Mastered React, Node.js, databases, and deployment technologies
-      Contributed to multiple popular open source projects
-      Built strong foundation in full-stack development practices
-      Participated in code reviews and community discussions actively
-    `,
-    tech: ["React", "Node.js", "TypeScript"],
-  },
-];
+import { experiences } from "@/data/experienceData";
 
 export function ExperienceList() {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
@@ -266,40 +67,7 @@ export function ExperienceList() {
                 <div className="flex flex-col gap-0.5 min-w-0 pr-2 sm:pr-4">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="text-[14px] font-bold leading-tight text-zinc-900 dark:text-zinc-100 sm:text-[17px]">
-                      {item.title === "Vercel OSS Program x VengenceUI" ? (
-                        <>
-                          <span className="sm:hidden">Vercel OSS Program x VengenceUI</span>
-                          <span className="hidden flex-wrap items-center gap-x-2 gap-y-1 align-middle sm:inline-flex">
-                            <span className="inline-flex h-10 items-center">
-                              Vercel OSS Program
-                            </span>
-                            <span className="inline-flex h-10 items-center text-[13px] font-semibold leading-none text-zinc-500 dark:text-zinc-500">
-                              x
-                            </span>
-                            <span className="inline-flex h-10 items-center gap-2 leading-none">
-                              <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border border-black/10 bg-zinc-50 p-[2px] shadow-sm shadow-black/15 dark:border-zinc-800 dark:bg-[#111111] dark:shadow-md dark:shadow-black/50">
-                                <span className="inline-flex size-full items-center justify-center overflow-hidden rounded-[7px] border border-black/5 bg-white dark:border-black/20">
-                                  <Image
-                                    src="/Experience-image/vengenceui-title-bg-less.png"
-                                    alt=""
-                                    width={113}
-                                    height={96}
-                                    sizes="40px"
-                                    quality={60}
-                                    aria-hidden="true"
-                                    className="h-[18px] w-auto -translate-x-px translate-y-px rotate-180 object-contain"
-                                  />
-                                </span>
-                              </span>
-                              <span className="inline-flex h-10 items-center">
-                                VengenceUI
-                              </span>
-                            </span>
-                          </span>
-                        </>
-                      ) : (
-                        item.title
-                      )}
+                      {item.title}
                     </span>
                     {item.type && (
                       <span className="self-center px-1.5 py-[1px] rounded-[4px] text-[11px] font-medium text-zinc-600 dark:text-zinc-400 bg-zinc-200/50 dark:bg-zinc-800/50 border border-zinc-300/50 dark:border-zinc-700/50 whitespace-nowrap">
@@ -307,9 +75,7 @@ export function ExperienceList() {
                       </span>
                     )}
                   </div>
-                  <span
-                    className={`${item.title === "Vercel OSS Program x VengenceUI" ? "sm:-mt-2" : ""} text-[14px] sm:text-[15px] text-zinc-600 dark:text-zinc-400 truncate`}
-                  >
+                  <span className="text-[14px] sm:text-[15px] text-zinc-600 dark:text-zinc-400 truncate">
                     {item.role}
                   </span>
                 </div>
@@ -319,8 +85,9 @@ export function ExperienceList() {
                   <span>{item.dates}</span>
                   <svg
                     viewBox="0 0 24 24"
-                    className={`w-3.5 h-3.5 text-zinc-500 absolute -right-5 top-1/2 -translate-y-1/2 -mt-[1.5px] transition-transform duration-300 ${isOpen ? "rotate-180" : ""
-                      }`}
+                    className={`w-3.5 h-3.5 text-zinc-500 absolute -right-5 top-1/2 -translate-y-1/2 -mt-[1.5px] transition-transform duration-300 ${
+                      isOpen ? "rotate-180" : ""
+                    }`}
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2.5"
@@ -336,13 +103,15 @@ export function ExperienceList() {
 
             {/* Expandable Details Section */}
             <div
-              className={`-mx-4 grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-                }`}
+              className={`-mx-4 grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] ${
+                isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+              }`}
             >
               <div className="overflow-hidden">
                 <div
-                  className={`${isOpen ? "pb-4 pt-0 opacity-100 translate-y-0" : "pb-0 pt-0 opacity-0 -translate-y-2"
-                    } transition-all duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] pl-6 pr-8 text-[14px] text-zinc-600 dark:text-zinc-400`}
+                  className={`${
+                    isOpen ? "pb-4 pt-0 opacity-100 translate-y-0" : "pb-0 pt-0 opacity-0 -translate-y-2"
+                  } transition-all duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] pl-6 pr-8 text-[14px] text-zinc-600 dark:text-zinc-400`}
                 >
                   {item.metrics && (
                     <div className="relative -ml-6 -mr-8 mb-4">
@@ -353,7 +122,9 @@ export function ExperienceList() {
                             className="relative min-w-0 px-3 py-2 after:absolute after:bottom-0 after:right-0 after:top-0 after:w-0 after:border-r after:border-black/30 after:[mask-image:repeating-linear-gradient(to_bottom,black_0,black_1px,transparent_1px,transparent_6px)] dark:after:border-white/[0.15] [&:nth-child(2n)]:after:hidden 2xl:[&:not(:last-child)]:after:block 2xl:[&:last-child]:after:hidden"
                           >
                             <p
-                              className={`${metric.value.includes(" - ") ? "text-[13px]" : "text-[16px]"} whitespace-nowrap font-bold leading-none text-zinc-900 dark:text-zinc-100`}
+                              className={`${
+                                metric.value.includes(" - ") ? "text-[13px]" : "text-[16px]"
+                              } whitespace-nowrap font-bold leading-none text-zinc-900 dark:text-zinc-100`}
                             >
                               {metric.value}
                             </p>
@@ -401,7 +172,7 @@ export function ExperienceList() {
                     <div className="relative mb-4 overflow-hidden bg-black">
                       <Image
                         src={item.screenshot}
-                        alt={`${item.title} analytics screenshot`}
+                        alt={`${item.title} screenshot`}
                         width={1400}
                         height={1050}
                         sizes="(min-width: 768px) 40vw, calc(100vw - 3rem)"
@@ -416,41 +187,11 @@ export function ExperienceList() {
                       .split("\n")
                       .filter((line) => line.trim() !== "")
                       .map((point, i) => {
-                        const [label, ...detail] = point.trim().split(":");
-
+                        const trimmed = point.trim();
                         return (
                           <li key={i} className="flex items-start gap-1.5">
                             <span className="text-zinc-400 dark:text-zinc-500 mt-[2px] text-[14px] leading-none">•</span>
-                            <span>
-                              {detail.length > 0 ? (
-                                <>
-                                  <strong className="font-semibold text-zinc-800 dark:text-zinc-200">
-                                    {label}:
-                                  </strong>
-                                  {detail
-                                    .join(":")
-                                    .split(
-                                      /(kgateway|FOSSology|FOSSASIA Eventyay|Extralit|React JSON Schema Form)/,
-                                    )
-                                    .map((part, partIndex) =>
-                                      /^(kgateway|FOSSology|FOSSASIA Eventyay|Extralit|React JSON Schema Form)$/.test(
-                                        part,
-                                      ) ? (
-                                        <strong
-                                          key={partIndex}
-                                          className="font-semibold text-zinc-800 dark:text-zinc-200"
-                                        >
-                                          {part}
-                                        </strong>
-                                      ) : (
-                                        part
-                                      ),
-                                    )}
-                                </>
-                              ) : (
-                                point.trim()
-                              )}
-                            </span>
+                            <span>{trimmed}</span>
                           </li>
                         );
                       })}

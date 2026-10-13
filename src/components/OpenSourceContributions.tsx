@@ -40,9 +40,9 @@ const MAX_PRS_PER_FILTER = 300;
 const PR_CACHE_VERSION = "v2_300";
 
 const SEARCH_QUERIES: Record<FilterType, string> = {
-  merged: "author:Ashutoshx7 type:pr is:merged",
-  open: "author:Ashutoshx7 type:pr is:open",
-  closed: "author:Ashutoshx7 type:pr is:closed is:unmerged",
+  merged: "author:j4yop type:pr is:merged",
+  open: "author:j4yop type:pr is:open",
+  closed: "author:j4yop type:pr is:closed is:unmerged",
 };
 
 function buildGraphQLQuery(searchQuery: string, after: string | null) {
@@ -136,8 +136,7 @@ export function OpenSourceContributions({ isFullPage = false }: { isFullPage?: b
 
       if (fetchedEdges.length > 0) {
         const fetchedPRs = fetchedEdges
-          .flatMap((edge) => (edge?.node ? [edge.node] : []))
-          .filter((pr: PR) => !(pr.title === "Main" && pr.repository.nameWithOwner === "Ashutoshx7/flexprice-storybook"));
+          .flatMap((edge) => (edge?.node ? [edge.node] : []));
         fetchedPRs.sort((a: PR, b: PR) => {
           const dateA = new Date(b.mergedAt || b.closedAt || b.createdAt).getTime();
           const dateB = new Date(a.mergedAt || a.closedAt || a.createdAt).getTime();
