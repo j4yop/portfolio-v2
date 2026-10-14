@@ -12,7 +12,7 @@ import Image from "next/image";
 import { experiences } from "@/data/experienceData";
 
 export default function AllExperiencePage() {
-  const [openIdx, setOpenIdx] = useState<number | null>(0);
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   const selectExperience = (experienceIndex: number) => {
     setOpenIdx(experienceIndex);

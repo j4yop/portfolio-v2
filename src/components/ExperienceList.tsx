@@ -6,7 +6,7 @@ import { experiences } from "@/data/experienceData";
 import { ExternalLink, Award } from "lucide-react";
 
 export function ExperienceList() {
-  const [openIdx, setOpenIdx] = useState<number | null>(0);
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   return (
     <div className="block">
