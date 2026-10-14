@@ -16,8 +16,8 @@ export type ExperienceData = {
 
 export const experiences: ExperienceData[] = [
   {
-    title: "Centre for Cyber-Physical Systems (CCPS), VIT Chennai",
-    role: "Research Intern",
+    title: "Research Intern",
+    role: "Centre for Cyber-Physical Systems (CCPS), VIT Chennai",
     dates: "May 2026 – Aug 2026",
     location: "Chennai, Tamil Nadu",
     src: "/Experience-image/vit.svg",

@@ -20,8 +20,8 @@ type TimelineItem = {
 
 const timelineItems: TimelineItem[] = [
   {
-    label: "Centre for Cyber-Physical Systems (CCPS)",
-    shortLabel: "CCPS, VIT",
+    label: "Research Intern (CCPS)",
+    shortLabel: "Research Intern",
     dates: "May 2026 – Aug 2026",
     detail: "Research Intern, Centre for Cyber-Physical Systems, VIT Chennai",
     experienceIndex: 0,
