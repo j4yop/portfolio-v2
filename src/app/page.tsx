@@ -187,12 +187,6 @@ export default function Home() {
           Computer Science Engineering student specializing in Artificial Intelligence & Robotics at Vellore Institute of Technology (VIT Chennai). Rapid 0→1 builder focused on real-time operational telemetry, deterministic policy systems, and physics-informed deep learning.
         </p>
 
-        <ul className="text-[14px] sm:text-[15px] text-zinc-600 dark:text-zinc-300 leading-relaxed mt-4 pl-4">
-          <li className="flex gap-1.5"><span>•</span><span><span className="font-semibold text-zinc-900 dark:text-white">1st Place Winner</span>, YC Fall 2026 × Moss Zero-Latency Builder Sprint for sub-10ms dispatch systems (<span className="font-semibold text-zinc-900 dark:text-white">Pulse911</span>).</span></li>
-          <li className="flex gap-1.5"><span>•</span><span><span className="font-semibold text-zinc-900 dark:text-white">Research Intern</span> at Centre for Cyber-Physical Systems (CCPS), VIT Chennai on geospatial physical validation models (0.722 PA-IoU).</span></li>
-          <li className="flex gap-1.5"><span>•</span><span>Building <span className="font-semibold text-zinc-900 dark:text-white">Pulse911</span>, <span className="font-semibold text-zinc-900 dark:text-white">ContextGC</span> (PyPI AST defragmenter), <span className="font-semibold text-zinc-900 dark:text-white">der02</span>, and <span className="font-semibold text-zinc-900 dark:text-white">PitwallEar</span>.</span></li>
-        </ul>
-
         {/* Action Buttons: Direct GitHub & LinkedIn visit + Contact */}
         <div className="flex flex-wrap items-center gap-2 mt-4">
           <a
@@ -269,7 +263,7 @@ export default function Home() {
               { name: 'GitHub', href: 'https://github.com/j4yop', icon: SiGithub },
               { name: 'LinkedIn', href: 'https://www.linkedin.com/in/jaygopaltripathy', icon: SiLinkedin },
               { name: 'LeetCode', href: 'https://leetcode.com/u/oM54KoQWvv/', icon: SiLeetcode },
-              { name: 'HackerRank', href: 'https://www.hackerrank.com/profile/jay_gopaltripat1', icon: SiHackerrank },
+              { name: 'HackerRank', href: 'https://www.hackerrank.com/profile/jay20gopal', icon: SiHackerrank },
             ].map((social, i) => {
               const IconComponent = social.icon;
               return (

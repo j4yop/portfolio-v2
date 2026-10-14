@@ -76,5 +76,5 @@ npm run build
 - **GitHub:** [j4yop](https://github.com/j4yop)
 - **LinkedIn:** [Jay Gopal Tripathy](https://linkedin.com/in/jaygopaltripathy)
 - **LeetCode:** [oM54KoQWvv](https://leetcode.com/u/oM54KoQWvv/)
-- **HackerRank:** [jay_gopaltripat1](https://www.hackerrank.com/profile/jay_gopaltripat1)
+- **HackerRank:** [jay20gopal](https://www.hackerrank.com/profile/jay20gopal)
 - **Email:** [jay20gopal@gmail.com](mailto:jay20gopal@gmail.com)

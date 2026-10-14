@@ -63,7 +63,7 @@ const socialProfiles: Record<string, SocialProfile> = {
   },
   HackerRank: {
     name: "Jay Gopal Tripathy",
-    handle: "jay_gopaltripat1",
+    handle: "jay20gopal",
     avatar: "https://github.com/j4yop.png",
     bio: "Problem solving, Python, and software engineering challenges.",
     location: "India (UTC +05:30)",
