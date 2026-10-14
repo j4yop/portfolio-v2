@@ -7,12 +7,12 @@ import { RightNavbar } from "@/components/RightNavbar";
 import { FooterBackground } from "@/components/FooterBackground";
 import Link from "next/link";
 import { useState } from "react";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ExternalLink, Award } from "lucide-react";
 import Image from "next/image";
 import { experiences } from "@/data/experienceData";
 
 export default function AllExperiencePage() {
-  const [openIdx, setOpenIdx] = useState<number | null>(null);
+  const [openIdx, setOpenIdx] = useState<number | null>(0);
 
   const selectExperience = (experienceIndex: number) => {
     setOpenIdx(experienceIndex);
@@ -153,9 +153,23 @@ export default function AllExperiencePage() {
                             {item.title}
                           </span>
                           {item.type && (
-                            <span className="self-center whitespace-nowrap px-1.5 py-[1px] rounded-[4px] text-[11px] font-medium text-zinc-600 dark:text-zinc-400 bg-zinc-200/50 dark:bg-zinc-800/50 border border-zinc-300/50 dark:border-zinc-700/50">
+                            <span className="self-center whitespace-nowrap px-1.5 py-[1px] rounded-[4px] text-[11px] font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800/60">
                               {item.type}
                             </span>
+                          )}
+                          {item.certificateUrl && (
+                            <a
+                              href={item.certificateUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="inline-flex items-center gap-1 px-1.5 py-[1px] rounded-[4px] text-[11px] font-medium text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-800/60 hover:underline"
+                              title="View Official Certificate"
+                            >
+                              <Award className="w-3 h-3" />
+                              <span>Verified Proof</span>
+                              <ExternalLink className="w-2.5 h-2.5 opacity-70" />
+                            </a>
                           )}
                         </div>
                         <span className="truncate text-[14px] text-zinc-600 dark:text-zinc-400 sm:text-[15px]">
@@ -196,6 +210,31 @@ export default function AllExperiencePage() {
                           isOpen ? "pb-4 pt-0 opacity-100 translate-y-0" : "pb-0 pt-0 opacity-0 -translate-y-2"
                         } transition-all duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] pl-6 pr-8 text-[14px] text-zinc-600 dark:text-zinc-400`}
                       >
+                        {/* Embedded Certificate Banner */}
+                        {item.certificateUrl && (
+                          <div className="mb-4 p-3 rounded-lg bg-zinc-50 dark:bg-[#121214] border border-black/10 dark:border-white/10 flex flex-wrap items-center justify-between gap-3 shadow-xs">
+                            <div className="flex items-center gap-2">
+                              <Award className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                              <div>
+                                <p className="text-[13px] font-semibold text-zinc-900 dark:text-zinc-100">
+                                  Research Internship Credential
+                                </p>
+                                <p className="text-[11px] text-zinc-500">
+                                  Issued by Centre for Cyber-Physical Systems, VIT Chennai
+                                </p>
+                              </div>
+                            </div>
+                            <a
+                              href={item.certificateUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-[6px] text-[12px] font-medium text-white bg-blue-600 hover:bg-blue-500 dark:bg-blue-700 dark:hover:bg-blue-600 transition-colors shadow-xs"
+                            >
+                              <span>View Proof on Google Drive</span>
+                              <ExternalLink className="w-3.5 h-3.5" />
+                            </a>
+                          </div>
+                        )}
                         {item.metrics && (
                           <div className="relative -ml-6 -mr-8 mb-4">
                             <div className="grid max-w-full grid-cols-2 pl-6 pr-8 2xl:grid-cols-4">

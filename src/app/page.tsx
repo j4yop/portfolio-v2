@@ -185,17 +185,51 @@ export default function Home() {
       {/* Flowing Content Section */}
       <div className="ml-0 mr-0 md:ml-[30%] md:mr-[30%] pt-[calc(22vh+112px)] pb-0 px-4 flex flex-col z-10 relative min-h-screen">
         <p className="text-[14px] sm:text-[15px] text-zinc-600 dark:text-zinc-300 leading-relaxed mt-4">
-          Computer Science Engineering student specializing in Artificial Intelligence & Robotics at VIT Chennai. Passionate about designing scalable intelligent systems, computer vision pipelines, and impactful technology.
+          Computer Science Engineering student specializing in Artificial Intelligence & Robotics at Vellore Institute of Technology (VIT Chennai). Rapid 0→1 builder focused on real-time operational telemetry, deterministic policy systems, and physics-informed deep learning.
         </p>
 
         <ul className="text-[14px] sm:text-[15px] text-zinc-600 dark:text-zinc-300 leading-relaxed mt-4 pl-4">
-          <li className="flex gap-1.5"><span>•</span><span>Transforming research into production products with clean architecture and systems engineering.</span></li>
-          <li className="flex gap-1.5"><span>•</span><span>Building AI-powered applications, offline emergency mesh systems, and autonomous agent platforms.</span></li>
-          <li className="flex gap-1.5"><span>•</span><span>Currently engineering <span className="font-semibold text-zinc-900 dark:text-white">RescueMesh</span>, <span className="font-semibold text-zinc-900 dark:text-white">PitwallEar</span>, and physics-informed SAR flood mapping models.</span></li>
+          <li className="flex gap-1.5"><span>•</span><span><span className="font-semibold text-zinc-900 dark:text-white">1st Place Winner</span>, YC Fall 2026 × Moss Zero-Latency Builder Sprint for sub-10ms dispatch systems (<span className="font-semibold text-zinc-900 dark:text-white">Pulse911</span>).</span></li>
+          <li className="flex gap-1.5"><span>•</span><span><span className="font-semibold text-zinc-900 dark:text-white">Research Intern</span> at Centre for Cyber-Physical Systems (CCPS), VIT Chennai on geospatial physical validation models (0.722 PA-IoU).</span></li>
+          <li className="flex gap-1.5"><span>•</span><span>Building <span className="font-semibold text-zinc-900 dark:text-white">Pulse911</span>, <span className="font-semibold text-zinc-900 dark:text-white">ContextGC</span> (PyPI AST defragmenter), <span className="font-semibold text-zinc-900 dark:text-white">der02</span>, and <span className="font-semibold text-zinc-900 dark:text-white">PitwallEar</span>.</span></li>
         </ul>
 
-        {/* Buttons */}
+        {/* Action Buttons: Direct GitHub & LinkedIn visit + Contact */}
         <div className="flex flex-wrap items-center gap-2 mt-4">
+          <a
+            href="https://github.com/j4yop"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block"
+          >
+            <SoftPillButton
+              as="span"
+              variant="secondary"
+              className="px-3 py-1.5 !text-[12px]"
+            >
+              <div className="flex items-center gap-1.5 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
+                <SiGithub className="w-3.5 h-3.5" aria-hidden="true" />
+                <span>Visit GitHub</span>
+              </div>
+            </SoftPillButton>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/jaygopaltripathy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block"
+          >
+            <SoftPillButton
+              as="span"
+              variant="secondary"
+              className="px-3 py-1.5 !text-[12px]"
+            >
+              <div className="flex items-center gap-1.5 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
+                <SiLinkedin className="w-3.5 h-3.5 text-[#0a66c2]" aria-hidden="true" />
+                <span>Visit LinkedIn</span>
+              </div>
+            </SoftPillButton>
+          </a>
           <Link href="/contact">
             <SoftPillButton
               as="span"
@@ -207,7 +241,7 @@ export default function Home() {
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                   <polyline points="22,6 12,13 2,6"></polyline>
                 </svg>
-                Get in touch
+                <span>Get in touch</span>
               </div>
             </SoftPillButton>
           </Link>
@@ -222,7 +256,7 @@ export default function Home() {
             >
               <div className="flex items-center gap-1.5 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
                 <span>@</span>
-                jay20gopal@gmail.com
+                <span>jay20gopal@gmail.com</span>
               </div>
             </SoftPillButton>
           </a>
@@ -234,7 +268,7 @@ export default function Home() {
           <div className="flex flex-wrap gap-1.5">
             {[
               { name: 'GitHub', href: 'https://github.com/j4yop', icon: SiGithub },
-              { name: 'LinkedIn', href: 'https://linkedin.com/in/jaygopaltripathy', icon: SiLinkedin },
+              { name: 'LinkedIn', href: 'https://www.linkedin.com/in/jaygopaltripathy', icon: SiLinkedin },
               { name: 'LeetCode', href: 'https://leetcode.com/u/oM54KoQWvv/', icon: SiLeetcode },
               { name: 'HackerRank', href: 'https://www.hackerrank.com/profile/jay_gopaltripat1', icon: SiHackerrank },
             ].map((social, i) => {

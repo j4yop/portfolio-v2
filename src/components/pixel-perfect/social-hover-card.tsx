@@ -43,11 +43,11 @@ const socialProfiles: Record<string, SocialProfile> = {
     handle: "in/jaygopaltripathy",
     avatar: "https://github.com/j4yop.png",
     banner: true,
-    bio: "CSE (AI & Robotics) @ VIT Chennai. Transforming research ideas into practical products.",
+    bio: "CSE (AI & Robotics) @ VIT Chennai. Research Intern at CCPS. 1st Place Winner, YC Fall 2026 × Moss Sprint.",
     location: "Chennai, Tamil Nadu, India",
     stats: [
-      { value: "VIT", label: "Chennai" },
-      { value: "AI & Robotics", label: "Specialization" },
+      { value: "CCPS", label: "Research Intern" },
+      { value: "1st Place", label: "YC F26 Moss" },
     ],
   },
   LeetCode: {
