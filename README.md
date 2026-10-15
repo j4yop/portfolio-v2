@@ -1,10 +1,18 @@
+# Jay Gopal Tripathy — Portfolio
 
+A minimal, fast, and interactive developer portfolio for **Jay Gopal Tripathy** (`j4yop`), built with **Next.js 16**, **React 19**, **Tailwind CSS v4**, and **TypeScript**.
 
-# Ashutoshx7 — Portfolio
+Showcases systems engineering, AI & robotics research, open-source projects, and technical writing — featuring dark/light blueprint theme, Three.js displacement canvas, and an interactive command palette.
 
-A minimal, fast, and interactive developer portfolio built with **Next.js 16**, **React 19**, **Tailwind CSS v4**, and **TypeScript**.
+---
 
-It showcases my work, experience, open-source contributions, skills, and writing — with a dark/light theme, smooth motion, and a command palette for quick navigation.
+## Identity & About
+
+- **Name:** Jay Gopal Tripathy
+- **Role:** AI & Robotics Engineer
+- **Education:** B.Tech Computer Science & Engineering (AI & Robotics), VIT Chennai (2024–2028)
+- **Specialization:** Intelligent Systems, Computer Vision, Physics-Informed ML, Autonomous Agent Security
+- **Flagship Projects:** `der02`, `SovereignGuard`, `RescueMesh`, `MARGINS`, `PitwallEar`
 
 ---
 
@@ -14,7 +22,7 @@ It showcases my work, experience, open-source contributions, skills, and writing
 - **Library:** [React](https://react.dev/) 19
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/) v4
 - **Language:** [TypeScript](https://www.typescriptlang.org/)
-- **Animation:** [Framer Motion](https://www.framer.com/motion/), [GSAP](https://greensock.com/gsap/)
+- **Animation:** [Framer Motion](https://www.framer.com/motion/), [GSAP](https://greensock.com/gsap/), [Three.js](https://threejs.org/)
 - **UI Components:** [shadcn/ui](https://ui.shadcn.com/) + [Radix UI](https://www.radix-ui.com/)
 - **Icons:** [Lucide React](https://lucide.dev/), [React Icons](https://react-icons.github.io/react-icons/)
 - **Deployment:** [Vercel](https://vercel.com/) with Analytics & Speed Insights
@@ -24,16 +32,12 @@ It showcases my work, experience, open-source contributions, skills, and writing
 ## Features
 
 - Responsive, grid-based layout with blueprint-style micro-details
+- Interactive Three.js displacement typography canvas (`JAY GOPAL`)
 - Dark and light mode with system preference detection
 - Command palette (`Cmd/Ctrl + K`) for quick navigation
-- Interactive GitHub contribution graph
-- Project showcase with detail pages
-- Experience timeline
-- Open-source contributions section
-- Skills and technologies grid
-- Blog listing
-- Contact page
-- Sound-engineered micro-interactions
+- GitHub contribution heatmap and live GraphQL telemetry
+- Deep module architecture with single-source-of-truth domain models
+- Production-ready static page generation (SSG) across all routes
 
 ---
 
@@ -42,7 +46,7 @@ It showcases my work, experience, open-source contributions, skills, and writing
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/) 20 or later
-- npm / yarn / pnpm / bun
+- npm / pnpm / bun
 
 ### Install dependencies
 
@@ -64,52 +68,13 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 npm run build
 ```
 
-### Start the production server
-
-```bash
-npm start
-```
-
-### Lint
-
-```bash
-npm run lint
-```
-
----
-
-## Project Structure
-
-```text
-Portfolio-v2-
-├── src/
-│   ├── app/                 # Next.js App Router pages
-│   ├── components/          # React components & UI primitives
-│   ├── data/                # Projects and blogs data
-│   ├── hooks/               # Custom React hooks
-│   └── lib/                 # Utility functions and sound engine
-├── public/                  # Static assets
-├── next.config.ts           # Next.js configuration
-├── tsconfig.json            # TypeScript configuration
-└── package.json
-```
-
----
-
-## Deployment
-
-This site is optimized for deployment on [Vercel](https://vercel.com/). Connect your GitHub repository to Vercel and deploy with zero configuration.
-
-For other platforms, use the static or Node.js output mode configured in `next.config.ts`.
-
 ---
 
 ## Connect
 
-- **GitHub:** [Ashutoshx7](https://github.com/Ashutoshx7)
-- **Twitter / X:** [@Ashutosh_7x7](https://x.com/Ashutosh_7x7)
-- **LinkedIn:** [Ashutosh Singh](https://www.linkedin.com/in/ashutosh-singh-855177329/)
-
----
-
-Built with purpose, precision, and a little bit of chaos.
+- **Portfolio:** [jaygopal-portfolio.vercel.app](https://jaygopal-portfolio.vercel.app/)
+- **GitHub:** [j4yop](https://github.com/j4yop)
+- **LinkedIn:** [Jay Gopal Tripathy](https://linkedin.com/in/jaygopaltripathy)
+- **LeetCode:** [oM54KoQWvv](https://leetcode.com/u/oM54KoQWvv/)
+- **HackerRank:** [jay20gopal](https://www.hackerrank.com/profile/jay20gopal)
+- **Email:** [jay20gopal@gmail.com](mailto:jay20gopal@gmail.com)

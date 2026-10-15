@@ -28,56 +28,66 @@ interface SocialProfile {
 
 const socialProfiles: Record<string, SocialProfile> = {
   GitHub: {
-    name: "Ashutosh Singh",
-    handle: "Ashutoshx7",
-    avatar: "https://github.com/ashutoshx7.png",
-    bio: "20 • Artist / Engineer • Vengeance ARC",
-    location: "Delhi, India (UTC +05:30)",
+    name: "Jay Gopal Tripathy",
+    handle: "j4yop",
+    avatar: "https://github.com/j4yop.png",
+    bio: "AI & Robotics Engineer • CSE @ VIT Chennai • Building intelligent systems and open source tools.",
+    location: "Chennai, India (UTC +05:30)",
     stats: [
-      { value: "131", label: "Repositories" },
-      { value: "907", label: "Followers" },
-    ],
-  },
-  Twitter: {
-    name: "Ashutoshx7",
-    handle: "@Ashutosh_7x7",
-    avatar: "https://unavatar.io/twitter/Ashutosh_7x7",
-    banner: true,
-    bio: "20 • Artist / Engineer • 2× GSoC • Vercel OSS",
-    location: "Delhi, India (UTC +05:30)",
-    stats: [
-      { value: "500+", label: "Following" },
-      { value: "5K+", label: "Followers" },
+      { value: "j4yop", label: "GitHub" },
+      { value: "Active", label: "Developer" },
     ],
   },
   LinkedIn: {
-    name: "Ashutosh Singh",
-    handle: "in/ashutoshx7",
-    avatar: "https://github.com/ashutoshx7.png",
+    name: "Jay Gopal Tripathy",
+    handle: "in/jaygopaltripathy",
+    avatar: "https://github.com/j4yop.png",
     banner: true,
-    bio: "Building AI systems, developer tools, and open-source products.",
-    location: "Lucknow, Uttar Pradesh, India",
+    bio: "CSE (AI & Robotics) @ VIT Chennai. Research Intern at CCPS. 1st Place Winner, YC Fall 2026 × Moss Sprint.",
+    location: "Chennai, Tamil Nadu, India",
     stats: [
-      { value: "500+", label: "Connections" },
-      { value: "5K+", label: "Followers" },
+      { value: "CCPS", label: "Research Intern" },
+      { value: "1st Place", label: "YC F26 Moss" },
     ],
   },
-  Medium: {
-    name: "Ashutosh Singh",
-    handle: "@ashutoshx7",
-    avatar: "https://github.com/ashutoshx7.png",
-    bio: "Writing about modern web engineering, pixel-perfect design systems, and frontend optimizations.",
-    location: "Delhi, India (UTC +05:30)",
+  LeetCode: {
+    name: "Jay Gopal Tripathy",
+    handle: "oM54KoQWvv",
+    avatar: "https://github.com/j4yop.png",
+    bio: "Algorithmic problem solving, data structures, and competitive programming.",
+    location: "India (UTC +05:30)",
     stats: [
-      { value: "12", label: "Stories" },
-      { value: "85", label: "Followers" },
+      { value: "Active", label: "Solver" },
+      { value: "DSA", label: "Practice" },
+    ],
+  },
+  HackerRank: {
+    name: "Jay Gopal Tripathy",
+    handle: "jay20gopal",
+    avatar: "https://github.com/j4yop.png",
+    bio: "Problem solving, Python, and software engineering challenges.",
+    location: "India (UTC +05:30)",
+    stats: [
+      { value: "Verified", label: "Profile" },
+      { value: "Gold", label: "Badges" },
+    ],
+  },
+  Twitter: {
+    name: "Jay Gopal Tripathy",
+    handle: "@j4yop",
+    avatar: "https://github.com/j4yop.png",
+    banner: true,
+    bio: "AI & Robotics Engineer • Building impactful technology and intelligent systems.",
+    location: "India (UTC +05:30)",
+    stats: [
+      { value: "j4yop", label: "Handle" },
     ],
   },
   Discord: {
-    name: "Ashutoshx7",
-    handle: "ashutoshsingh71",
-    avatar: "/discord-avatar.png",
-    bio: "Even if it's dark, keep moving forward.",
+    name: "Jay Gopal Tripathy",
+    handle: "j4yop",
+    avatar: "https://github.com/j4yop.png",
+    bio: "Building, learning, and shipping intelligent systems.",
     location: "",
     stats: [],
   },
@@ -142,7 +152,7 @@ export default function SocialHoverCard({ socialName, children }: SocialHoverCar
                   "text-zinc-900 dark:text-zinc-100 select-none"
                 )}
               >
-                {socialName === "GitHub" || socialName === "Discord" ? (
+                {socialName === "GitHub" || socialName === "Discord" || socialName === "LeetCode" || socialName === "HackerRank" ? (
                   // Official flat Layout (No banner, side-by-side avatar and name/handle)
                   <div className="p-4">
                     {/* Top Row: Avatar & Name side-by-side */}

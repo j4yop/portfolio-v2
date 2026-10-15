@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <linearGradient id="g4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c4a6e"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" rx="24" fill="url(#g4)"/>
+  <circle cx="300" cy="140" r="60" fill="#38bdf8" fill-opacity="0.2"/>
+  <path d="M260 160 C 280 120, 320 120, 340 160" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
+  <path d="M270 175 C 290 145, 310 145, 330 175" fill="none" stroke="#bae6fd" stroke-width="6" stroke-linecap="round"/>
+  <text x="300" y="270" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="28" font-weight="bold">D8FN SAR Flood Mapping</text>
+  <text x="300" y="310" text-anchor="middle" fill="#bae6fd" font-family="system-ui, sans-serif" font-size="20">Physics-Informed Deep Learning Research</text>
+</svg>

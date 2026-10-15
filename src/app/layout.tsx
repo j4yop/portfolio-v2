@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Doto, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { OnekoPet } from "@/components/OnekoPet";
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
@@ -24,11 +25,11 @@ const doto = Doto({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://ashutoshx7.me"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://jaygopal-portfolio.vercel.app"
   ),
-  title: "Ashutoshx7",
+  title: "Jay Gopal Tripathy | AI & Robotics Engineer",
   description:
-    "Full stack developer building clean, modern websites and apps with a focus on design, functionality, and attention to detail.",
+    "Computer Science & Engineering (AI & Robotics) student at VIT Chennai. Building scalable AI systems, computer vision models, and intelligent products.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -37,31 +38,31 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "180x180" }],
   },
   openGraph: {
-    title: "Ashutoshx7",
+    title: "Jay Gopal Tripathy | AI & Robotics Engineer",
     description:
-      "Full stack developer building clean, modern websites and apps.",
-    url: "https://ashutoshx7.me",
-    siteName: "Ashutoshx7",
+      "Computer Science & Engineering (AI & Robotics) student at VIT Chennai.",
+    url: "https://jaygopal-portfolio.vercel.app",
+    siteName: "Jay Gopal Tripathy",
     type: "website",
     images: [
       {
-        url: "https://ashutoshx7.me/og-image.jpg",
-        secureUrl: "https://ashutoshx7.me/og-image.jpg",
+        url: "/og-image.jpg",
+        secureUrl: "/og-image.jpg",
         width: 1024,
         height: 576,
         type: "image/jpeg",
-        alt: "Ashutoshx7 - Engineer / Artist Portfolio",
+        alt: "Jay Gopal Tripathy - AI & Robotics Engineer Portfolio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ashutoshx7",
+    title: "Jay Gopal Tripathy | AI & Robotics Engineer",
     description:
-      "Full stack developer building clean, modern websites and apps.",
-    site: "@Ashutosh_7x7",
-    creator: "@Ashutosh_7x7",
-    images: ["https://ashutoshx7.me/og-image.jpg"],
+      "Computer Science & Engineering (AI & Robotics) student at VIT Chennai.",
+    site: "@j4yop",
+    creator: "@j4yop",
+    images: ["/og-image.jpg"],
   },
 };
 
@@ -83,6 +84,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <OnekoPet />
           {children}
         </ThemeProvider>
         <Analytics />

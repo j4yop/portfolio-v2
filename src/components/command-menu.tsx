@@ -80,9 +80,6 @@ export function CommandMenu() {
                 } else if (key === 'p') {
                     e.preventDefault()
                     runCommand(() => window.location.hash = "#projects")
-                } else if (key === 'b') {
-                    e.preventDefault()
-                    runCommand(() => window.location.hash = "#blogs")
                 } else if (key === 'o') {
                     e.preventDefault()
                     runCommand(() => window.location.hash = "#opensource")
@@ -160,11 +157,6 @@ export function CommandMenu() {
                             <Code className="mr-2 h-4 w-4 text-zinc-500" />
                             <span>Projects</span>
                             <CommandShortcut className="font-mono text-[10px] bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded border border-zinc-200 dark:border-zinc-700">shift + P</CommandShortcut>
-                        </CommandItem>
-                        <CommandItem onSelect={() => runCommand(() => window.location.hash = "#blogs")} className="rounded-lg py-3 cursor-pointer">
-                            <FileText className="mr-2 h-4 w-4 text-zinc-500" />
-                            <span>Blogs</span>
-                            <CommandShortcut className="font-mono text-[10px] bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded border border-zinc-200 dark:border-zinc-700">shift + B</CommandShortcut>
                         </CommandItem>
                         <CommandItem onSelect={() => runCommand(() => window.location.hash = "#opensource")} className="rounded-lg py-3 cursor-pointer">
                             <SiGithub className="mr-2 h-4 w-4 text-zinc-500" />

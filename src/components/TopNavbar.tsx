@@ -28,7 +28,7 @@ export function TopNavbar() {
       { rootMargin: "-20% 0px -60% 0px", threshold: 0.1 }
     );
 
-    const sections = ["experience", "projects", "blogs", "opensource", "skills"];
+    const sections = ["experience", "projects", "opensource", "skills"];
     sections.forEach((id) => {
       const element = document.getElementById(id);
       if (element) observer.observe(element);
@@ -40,7 +40,7 @@ export function TopNavbar() {
   const links = [
     { name: "Experience", href: "#experience" },
     { name: "Projects", href: "#projects" },
-    { name: "Blog", href: "#blogs" },
+    { name: "Open Source", href: "#opensource" },
   ];
 
   return (
